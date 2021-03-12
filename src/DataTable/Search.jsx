@@ -1,7 +1,7 @@
 import React from 'react'
 
-const Search = (props) => {
-    const {onSearch} = props
+const Search = ({onSearch, placeholder = 'Søg brugere'}) => {
+
 
     const searchHandler = (event) => {
         onSearch(event.target.value);
@@ -12,7 +12,7 @@ const Search = (props) => {
             <input
                 type="search"
                 className="form-control"
-                placeholder="Søg brugere"
+                placeholder={placeholder}
                 onChange={searchHandler}/>
         </div>
     )

@@ -6,10 +6,7 @@ import Search from './Search'
 import {calculateTotalNumberOfPages, getPageData, getSearchResult} from './helpers';
 import {config} from '../config/config';
 
-const DataTable = (props) => {
-
-    const rows = props.rows || [];
-    const rowsPerPage = props.rowsPerPage || config.defaultRowsPerPage;
+const DataTable = ({rows = [], rowsPerPage = config.defaultRowsPerPage}) => {
 
     const [currentPageNumber, setCurrentPageNumber] = useState(0);
     const [queryString, setQueryString] = useState('');
