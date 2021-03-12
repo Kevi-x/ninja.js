@@ -13,7 +13,7 @@ const DataTable = ({rows = [], rowsPerPage = config.defaultRowsPerPage}) => {
 
     const filteredRows = getSearchResult(rows, queryString);
 
-    const totalNumberOfPages = calculateTotalNumberOfPages(rows.length, rowsPerPage);
+    const totalNumberOfPages = calculateTotalNumberOfPages(filteredRows.length, rowsPerPage);
 
 
     const searchHandler = (text) => {
