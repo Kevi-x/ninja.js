@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page from './Page'
+import PaginationPageItem from './PaginationPageItem'
 
 const Pagination = ({currentPageNumber = 0, totalNumberOfPages, onChange}) => {
 
@@ -11,9 +11,9 @@ const Pagination = ({currentPageNumber = 0, totalNumberOfPages, onChange}) => {
     const pages =
         [...Array(totalNumberOfPages).keys()]
             .map(pageNumber => {
-                return <Page
+                return <PaginationPageItem
                     key={pageNumber}
-                    currentPageNumber={currentPageNumber}
+                    isActive={pageNumber === currentPageNumber}
                     pageNumber={pageNumber}
                     onChange={onChange}/>
             })
