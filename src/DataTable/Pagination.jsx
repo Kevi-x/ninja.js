@@ -1,10 +1,11 @@
 import React from 'react'
 
 import PaginationPageItem from './PaginationPageItem'
+import PropTypes from 'prop-types';
 
 const Pagination = ({currentPageNumber = 0, totalNumberOfPages, onChange}) => {
 
-    if (totalNumberOfPages <= 1) {
+    if (!totalNumberOfPages || totalNumberOfPages <= 1) {
         return null;
     }
 
@@ -24,6 +25,12 @@ const Pagination = ({currentPageNumber = 0, totalNumberOfPages, onChange}) => {
             {pages}
         </ul>
     )
+}
+
+Pagination.propTypes = {
+    currentPageNumber: PropTypes.number.isRequired,
+    totalNumberOfPages: PropTypes.number.isRequired,
+    onChange: PropTypes.func.isRequired
 }
 
 export default Pagination

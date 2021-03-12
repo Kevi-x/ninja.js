@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 
 const Search = ({onSearch, placeholder = 'Søg brugere'}) => {
 
@@ -16,6 +17,11 @@ const Search = ({onSearch, placeholder = 'Søg brugere'}) => {
                 onChange={searchHandler}/>
         </div>
     )
+}
+
+Search.propTypes = {
+    onSearch: PropTypes.func.isRequired,
+    placeholder: PropTypes.string
 }
 
 export default Search
