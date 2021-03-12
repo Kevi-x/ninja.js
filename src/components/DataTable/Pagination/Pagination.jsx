@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PaginationPageItem from './PaginationPageItem'
+import PaginationPageItem from './PageItem/PaginationPageItem'
 import PropTypes from 'prop-types';
 
 const Pagination = ({currentPageNumber = 0, totalNumberOfPages, onChange}) => {

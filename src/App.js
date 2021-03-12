@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import DataTable from './DataTable';
+import DataTable from './components/DataTable/DataTable';
 import './App.css';
 import {userListMock} from './mocks/userListMock';
 

@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types';
-import Pagination from './Pagination'
-import Row from './Row'
-import Search from './Search'
+import Pagination from './Pagination/Pagination'
+import Row from './Row/Row'
+import Search from './Search/Search'
 import {calculateTotalNumberOfPages, getPageData, getSearchResult} from './helpers';
-import {config} from '../config/config';
+import {config} from '../../config/config';
 
 const DataTable = ({rows = [], rowsPerPage = config.defaultRowsPerPage}) => {
 

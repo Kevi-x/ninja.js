@@ -1,4 +1,5 @@
-import {config} from '../config/config';
+import {config} from '../../config/config';
+import {isNumber} from '../../utils/utils';
 
 /**
  * Calculates total number of available pages
@@ -66,16 +67,3 @@ export const getSearchResult = (data, queryString) => {
     return data.filter(item => (item.name1 && item.name1.toLowerCase().includes(queryString)) || (item.email && item.email.toLowerCase().includes(queryString)));
 }
 
-/**
- * Checks if value is null or undefined
- * @param value value to be checked
- * @return {boolean}
- */
-export const isNullOrUndefined = (value) => value === null || value === undefined;
-
-/**
- * Checks if value is a number and is finite
- * @param value value to be checked
- * @return {boolean}
- */
-export const isNumber = (value) => typeof value === 'number' && isFinite(value);
