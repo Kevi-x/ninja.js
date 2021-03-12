@@ -47,6 +47,26 @@ export const getPageData = (data, currentPageNumber, rowsPerPage) => {
 }
 
 /**
+ * Gets search results for query string
+ * @param data data to be search in
+ * @param queryString text to be search for
+ * @return {*[]|*} search result
+ */
+export const getSearchResult = (data, queryString) => {
+    if (!data) {
+        return [];
+    }
+
+    if (!queryString) {
+        return data;
+    }
+
+    queryString = queryString.toLowerCase();
+
+    return data.filter(item => (item.name1 && item.name1.toLowerCase().includes(queryString)) || (item.email && item.email.toLowerCase().includes(queryString)));
+}
+
+/**
  * Checks if value is null or undefined
  * @param value value to be checked
  * @return {boolean}

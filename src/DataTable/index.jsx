@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Pagination from './Pagination'
 import Row from './Row'
 import Search from './Search'
-import {calculateTotalNumberOfPages, getPageData} from './helpers';
+import {calculateTotalNumberOfPages, getPageData, getSearchResult} from './helpers';
 import {config} from '../config/config';
 
 const DataTable = (props) => {
@@ -14,38 +14,23 @@ const DataTable = (props) => {
     const [currentPageNumber, setCurrentPageNumber] = useState(0);
     const [queryString, setQueryString] = useState('');
 
+    const filteredRows = getSearchResult(rows, queryString);
 
     const totalNumberOfPages = calculateTotalNumberOfPages(rows.length, rowsPerPage);
 
 
-    const search = (event) => {
-
-        const text = event.target.value
-        let rowsFound = rows
-
-        if (text) {
-            rowsFound = rows.filter((row) => {
-                return row.name1.toLowerCase().search(text.toLowerCase()) > -1 ||
-                    (row.email && row.email.toLowerCase().search(text.toLowerCase()) > -1)
-            })
-        }
-        //
-        //   this.setState({
-        //     rows: rowsFound,
-        //     currentPageNumber: 0,
-        //     totalNumberOfPages: calculateTotalNumberOfPages(rowsFound)
-        //   })
+    const searchHandler = (text) => {
+        setQueryString(text);
+        setCurrentPageNumber(0);
     }
 
-    const changePageNumberHandler = (pageNumber) => {
-        setCurrentPageNumber(pageNumber);
-    }
+    const changePageNumberHandler = (pageNumber) => setCurrentPageNumber(pageNumber);
 
-    const rowsToRender = getPageData(rows, currentPageNumber, rowsPerPage)
+    const rowsToRender = getPageData(filteredRows, currentPageNumber, rowsPerPage)
 
     return (
         <div>
-            <Search onSearch={search.bind(this)}/>
+            <Search onSearch={searchHandler}/>
             <table>
                 <tbody>
                 {rowsToRender.map(row =>
