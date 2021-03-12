@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const PaginationPageItem = ({pageNumber, isActive = false, onChange}) => {
+const PaginationPageItem = ({pageNumber = 0, isActive = false, onChange}) => {
 
 
     const renderedPageNumber = () => {
@@ -12,10 +13,10 @@ const PaginationPageItem = ({pageNumber, isActive = false, onChange}) => {
         onChange(pageNumber);
     }
 
-    let buttonClasses = 'page-link ';
+    let buttonClasses = 'page-link';
 
-    if(isActive) {
-        buttonClasses += 'button-outline';
+    if (isActive) {
+        buttonClasses += ' button-outline';
     }
 
     return (
@@ -26,6 +27,12 @@ const PaginationPageItem = ({pageNumber, isActive = false, onChange}) => {
     )
 
 
+}
+
+PaginationPageItem.propTypes = {
+    pageNumber: PropTypes.number.isRequired,
+    isActive: PropTypes.bool.isRequired,
+    onChange: PropTypes.func.isRequired
 }
 
 export default PaginationPageItem;
