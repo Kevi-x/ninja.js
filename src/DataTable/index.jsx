@@ -4,8 +4,12 @@ import Pagination from './Pagination'
 import Row from './Row'
 import Search from './Search'
 import {calculateTotalNumberOfPages, getPageData} from './helpers';
+import {config} from '../config/config';
 
-const DataTable = ({rows, rowsPerPage}) => {
+const DataTable = (props) => {
+
+    const rows = props.rows || [];
+    const rowsPerPage = props.rowsPerPage || config.defaultRowsPerPage;
 
     const [currentPageNumber, setCurrentPageNumber] = useState(0);
     const [queryString, setQueryString] = useState('');
@@ -33,7 +37,7 @@ const DataTable = ({rows, rowsPerPage}) => {
         //   })
     }
 
-    const changeToPageNumber = (pageNumber) => {
+    const changePageNumberHandler = (pageNumber) => {
         setCurrentPageNumber(pageNumber);
     }
 
@@ -53,7 +57,7 @@ const DataTable = ({rows, rowsPerPage}) => {
             <Pagination
                 currentPageNumber={currentPageNumber}
                 totalNumberOfPages={totalNumberOfPages}
-                onChange={changeToPageNumber.bind(this)}/>
+                onChange={changePageNumberHandler}/>
         </div>
     )
 }
