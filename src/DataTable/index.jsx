@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import PropTypes from 'prop-types';
 import Pagination from './Pagination'
 import Row from './Row'
 import Search from './Search'
@@ -58,5 +58,9 @@ const DataTable = ({rows, rowsPerPage}) => {
     )
 }
 
+DataTable.propTypes = {
+    rows: PropTypes.array.isRequired,
+    rowsPerPage: PropTypes.number.isRequired
+}
 
 export default DataTable
